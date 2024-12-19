@@ -105,7 +105,7 @@ module RailsERD
       end
 
       def comment
-        @model.connection.exec_query("SELECT table_comment FROM information_schema.tables WHERE table_schema = '#{ActiveRecord::Base.connection.current_database}' AND table_name = '#{table_name}'").rows.flatten.first
+        @model.connection.exec_query("SELECT table_comment FROM information_schema.tables WHERE table_schema = '#{ActiveRecord::Base.connection.current_database}' AND table_name = '#{@model.table_name}'").rows.flatten.first
       end
     end
   end
