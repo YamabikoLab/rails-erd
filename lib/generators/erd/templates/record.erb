@@ -1,0 +1,8 @@
+<% attributes.each do |attr| %>
+  +<%= attr.type %> <%= attr.name %>
+<% end %>
+<% if public_methods %>
+  <% public_methods.each do |method| %>
+    +<%= method %>()
+  <% end %>
+<% end %>
