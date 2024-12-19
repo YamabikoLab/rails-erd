@@ -231,13 +231,13 @@ module RailsERD
         end
 
         # publicメソッド出力を追加
-        if entity.model
-          public_methods = entity.model.public_instance_methods(false)
-          public_methods.each do |method|
-            graph.add_nodes("#{entity.name}_#{method}", label: "+#{method}()")
-            graph.add_edges(entity.name, "#{entity.name}_#{method}")
-          end
-        end
+        # if entity.model
+        #   public_methods = entity.model.public_instance_methods(false)
+        #   public_methods.each do |method|
+        #     graph.add_nodes("#{entity.name}_#{method}", label: "+#{method}()")
+        #     graph.add_edges(entity.name, "#{entity.name}_#{method}")
+        #   end
+        # end
       end
 
       each_specialization do |specialization|
@@ -300,6 +300,7 @@ module RailsERD
       end
 
       def entity_options(entity, attributes)
+        public_methods = entity.model.public_instance_methods(false) if entity.model
         label = options[:markup] ? "<#{read_template(:html).result(binding)}>" : "#{read_template(:record).result(binding)}"
         entity_style(entity, attributes).merge :label => label
       end
