@@ -230,10 +230,12 @@ module RailsERD
           draw_node entity.name, entity_options(entity, attributes)
         end
 
+        # publicメソッド出力を追加
         if entity.model
           public_methods = entity.model.public_instance_methods(false)
           public_methods.each do |method|
-            graph << "\t`#{entity.name}` : +#{method}()"
+            graph.add_nodes("#{entity.name}_#{method}", label: "+#{method}()")
+            graph.add_edges(entity.name, "#{entity.name}_#{method}")
           end
         end
       end
@@ -299,7 +301,6 @@ module RailsERD
 
       def entity_options(entity, attributes)
         label = options[:markup] ? "<#{read_template(:html).result(binding)}>" : "#{read_template(:record).result(binding)}"
-        puts "label: #{label}"
         entity_style(entity, attributes).merge :label => label
       end
 
