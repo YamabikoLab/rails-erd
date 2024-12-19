@@ -150,6 +150,10 @@ module RailsERD
         return "(#{limit})" if limit
       end
 
+      def comment
+        @model.connection.exec_query("SELECT column_comment FROM information_schema.columns WHERE table_schema = '#{ActiveRecord::Base.connection.current_database}' AND table_name = '#{@model.table_name}' AND column_name = '#{name}'").rows.flatten.first
+      end
+
       private
 
       def native_type
