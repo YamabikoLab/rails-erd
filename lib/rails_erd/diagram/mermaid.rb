@@ -16,6 +16,7 @@ module RailsERD
       end
 
       each_entity do |entity, attributes|
+        puts "Entity: #{entity.inspect}"
         graph << "\tclass `#{entity}`"
 
         attributes.each do |attr|
