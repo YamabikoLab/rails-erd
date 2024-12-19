@@ -40,7 +40,7 @@ namespace :erd do
     say "Loading application environment..."
     Rake::Task[:environment].invoke
 
-    say "Loading code in search of Active Record models..."
+    say "Active Record モデルを検索してコードを読み込んでいます..."
     begin
       Rails.application.eager_load!
 
