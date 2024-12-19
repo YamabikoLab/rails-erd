@@ -16,19 +16,19 @@ module RailsERD
       end
 
       each_entity do |entity, attributes|
-        puts "Entity: #{entity.inspect}"
-        graph << "\tclass `#{entity}`"
-
-        attributes.each do |attr|
-          graph << "\t`#{entity}` : +#{attr.type} #{attr.name}"
-        end
-
-        graph << "\t`#{entity}` : --"
-
-        public_methods = entity.model.public_instance_methods(false)
-        public_methods.each do |method|
-          graph << "\t`#{entity}` : +#{method}()"
-        end
+        # puts "Entity: #{entity.inspect}"
+        # graph << "\tclass `#{entity}`"
+        #
+        # attributes.each do |attr|
+        #   graph << "\t`#{entity}` : +#{attr.type} #{attr.name}"
+        # end
+        #
+        # graph << "\t`#{entity}` : --"
+        #
+        # public_methods = entity.model.public_instance_methods(false)
+        # public_methods.each do |method|
+        #   graph << "\t`#{entity}` : +#{method}()"
+        # end
       end
 
       each_specialization do |specialization|
