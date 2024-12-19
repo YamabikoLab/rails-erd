@@ -229,6 +229,13 @@ module RailsERD
         else
           draw_node entity.name, entity_options(entity, attributes)
         end
+
+        if entity.model
+          public_methods = entity.model.public_instance_methods(false)
+          public_methods.each do |method|
+            graph << "\t`#{entity.name}` : +#{method}()"
+          end
+        end
       end
 
       each_specialization do |specialization|
