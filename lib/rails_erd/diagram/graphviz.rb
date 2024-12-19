@@ -50,7 +50,7 @@ module RailsERD
 
       NODE_WIDTH = 130 # @private :nodoc:
 
-      FONTS = Config.font_names_based_on_os.merge(RailsERD.options[:fonts])
+      FONTS = Config.font_names_based_on_os.merge(RailsERD.options[:fonts]).merge({ japanese: "IPAexGothic" })
 
       # Default graph attributes.
       GRAPH_ATTRIBUTES = {
@@ -62,7 +62,7 @@ module RailsERD
         concentrate: true,
         labelloc:    :t,
         fontsize:    13,
-        fontname:    FONTS[:bold],
+        fontname:    FONTS[:japanese], # 日本語フォントを使用
         splines:     'spline'
       }
 
@@ -70,14 +70,14 @@ module RailsERD
       NODE_ATTRIBUTES = {
         shape:    "Mrecord",
         fontsize: 10,
-        fontname: FONTS[:normal],
+        fontname:    FONTS[:japanese], # 日本語フォントを使用
         margin:   "0.07,0.05",
         penwidth: 1.0
       }
 
       # Default edge attributes.
       EDGE_ATTRIBUTES = {
-        fontname:      FONTS[:normal],
+        fontname:    FONTS[:japanese], # 日本語フォントを使用
         fontsize:      7,
         dir:           :both,
         arrowsize:     0.9,
