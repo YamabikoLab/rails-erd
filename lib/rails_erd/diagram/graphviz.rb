@@ -292,6 +292,7 @@ module RailsERD
 
       def entity_options(entity, attributes)
         label = options[:markup] ? "<#{read_template(:html).result(binding)}>" : "#{read_template(:record).result(binding)}"
+        puts "label: #{label}"
         entity_style(entity, attributes).merge :label => label
       end
 
