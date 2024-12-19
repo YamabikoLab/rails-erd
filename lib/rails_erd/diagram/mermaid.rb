@@ -18,8 +18,15 @@ module RailsERD
       each_entity do |entity, attributes|
         graph << "\tclass `#{entity}`"
 
-        attributes.each do | attr|
+        attributes.each do |attr|
           graph << "\t`#{entity}` : +#{attr.type} #{attr.name}"
+        end
+
+        graph << "\t`#{entity}` : --"
+
+        public_methods = entity.model.public_instance_methods(false)
+        public_methods.each do |method|
+          graph << "\t`#{entity}` : +#{method}()"
         end
       end
 
