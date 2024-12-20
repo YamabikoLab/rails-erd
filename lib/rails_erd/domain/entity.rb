@@ -107,6 +107,19 @@ module RailsERD
       def comment
         @model.connection.exec_query("SELECT table_comment FROM information_schema.tables WHERE table_schema = '#{ActiveRecord::Base.connection.current_database}' AND table_name = '#{@model.table_name}'").rows.flatten.first
       end
+
+      def display_name(name_output)
+        case name_output
+        when :physical
+          name
+        when :logical
+          comment
+        when :both
+          "#{name}(#{comment})"
+        else
+          name
+        end
+      end
     end
   end
 end
