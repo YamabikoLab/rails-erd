@@ -87,6 +87,9 @@ module RailsERD
           Hash(value).transform_keys(&:to_sym)
         end
 
+      when :name_output
+        value.to_sym
+
       else
         value
       end
