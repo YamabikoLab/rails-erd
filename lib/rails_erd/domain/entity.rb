@@ -115,7 +115,8 @@ module RailsERD
         when :logical
           comment
         when :both
-          "#{name}(#{comment})"
+          comment_text = comment
+          comment_text.present? ? "#{name}(#{comment_text})" : name
         else
           name
         end
